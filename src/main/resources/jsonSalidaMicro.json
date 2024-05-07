@@ -1,0 +1,58 @@
+{
+	"catalogo": [
+		{
+			"id": "11111",
+			"lugar": "PENINSULA",
+			"stock": "5",
+			"stockReal": "5",
+			"stockVirtual": "0",
+			"codigo": "11111",
+			"nombre": "Samsung Galaxy tab 1"
+		},
+		{
+			"id": "22222",
+			"lugar": "PENINSULA",
+			"stock": "5",
+			"stockReal": "5",
+			"stockVirtual": "0",
+			"codigo": "22222",
+			"nombre": "Samsung Galaxy tab 1"
+		},
+		{
+			"id": "33333",
+			"lugar": "PENINSULA",
+			"stock": "5",
+			"stockReal": "5",
+			"stockVirtual": "0",
+			"codigo": "33333",
+			"nombre": "Samsung Galaxy tab 1"
+		},
+		{
+			"id": "44444",
+			"lugar": "PENINSULA",
+			"stock": "5",
+			"stockReal": "5",
+			"stockVirtual": "0",
+			"codigo": "44444",
+			"nombre": "Samsung Galaxy tab 1"
+		},
+		{
+			"id": "55555",
+			"lugar": "PENINSULA",
+			"stock": "5",
+			"stockReal": "5",
+			"stockVirtual": "0",
+			"codigo": "55555",
+			"nombre": "Samsung Galaxy tab 1"
+		},
+		{
+			"id": "666666",
+			"lugar": "PENINSULA",
+			"stock": "0",
+			"stockReal": "0",
+			"stockVirtual": "0",
+			"codigo": "66666",
+			"nombre": "Samsung Galaxy tab 1"
+		}
+	]
+}
