@@ -16,6 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class Reader {
 
+	/**
+	 * Lee dos archivos CSV y combina los datos de ambos en una lista de objetos
+	 * {@link Productos}.
+	 * 
+	 * @return La lista de productos combinada.
+	 * @throws IOException Si ocurre un error de lectura de archivos.
+	 */
 	public List<Productos> readCsvFiles() throws IOException {
 		List<Productos> productosList = new ArrayList<>();
 
@@ -44,6 +51,15 @@ public class Reader {
 		return productosList;
 	}
 
+	/**
+	 * Lee un archivo CSV ubicado en la ruta especificada y crea objetos
+	 * {@link Productos} a partir de sus datos.
+	 *
+	 * @param filePath La ruta del archivo CSV a leer.
+	 * @return Una lista de objetos {@link Productos} creados a partir de los datos
+	 *         del archivo CSV.
+	 * @throws IOException Si ocurre un error de lectura del archivo.
+	 */
 	private List<Productos> readCsv(String filePath) throws IOException {
 		List<Productos> productosList = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -65,6 +81,15 @@ public class Reader {
 		return productosList;
 	}
 
+	/**
+	 * Lee un archivo CSV ubicado en la ruta especificada y crea objetos
+	 * {@link Productos} a partir de sus datos.
+	 *
+	 * @param filePath La ruta del archivo CSV a leer.
+	 * @return Una lista de objetos {@link Productos} creados a partir de los datos
+	 *         del archivo CSV.
+	 * @throws IOException Si ocurre un error de lectura del archivo.
+	 */
 	private List<Productos> anotherReadCsv(String filePath) throws IOException {
 
 		List<Productos> productosList = new ArrayList<>();

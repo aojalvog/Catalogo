@@ -15,6 +15,14 @@ public class ProductosServiceImpl implements ProductosServices {
 	@Autowired
 	private Reader reader;
 
+	/**
+	 * Obtiene el catálogo de productos.
+	 *
+	 * @return Una lista de objetos {@link Productos} que representan el catálogo de
+	 *         productos. Si ocurre un error durante la lectura del catálogo,
+	 *         devuelve null.
+	 */
+
 	@Override
 	public List<Productos> catalogo() {
 		try {
