@@ -1,4 +1,4 @@
-package com.springbatch.proyectocatalogo.model;
+package com.springbatch.proyectocatalogo.microservicio.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
