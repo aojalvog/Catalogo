@@ -19,21 +19,28 @@ public class Reader {
 
 		List<Productos> productosFromFirstCsv = readCsv(
 				"C:\\Users\\6003036\\Documents\\proyectos de Eclipse\\catalogo\\src\\main\\resources\\outputProductos.csv");
-		productosList.addAll(productosFromFirstCsv);
-
 		List<Productos> productosFromSecondCsv = anotherReadCsv(
 				"C:\\Users\\6003036\\Documents\\proyectos de Eclipse\\catalogo\\src\\main\\resources\\outputStock.csv");
-		productosList.addAll(productosFromSecondCsv);
 
-		int maxSize = Math.max(productosFromFirstCsv.size(), productosFromSecondCsv.size());
+		int maxSize = Math.min(productosFromFirstCsv.size(), productosFromSecondCsv.size());
 		for (int i = 0; i < maxSize; i++) {
-			if (i < productosFromFirstCsv.size()) {
-				productosList.add(productosFromFirstCsv.get(i));
-			}
-			if (i < productosFromSecondCsv.size()) {
-				productosList.add(productosFromSecondCsv.get(i));
-			}
+			Productos productoFromFirstCsv = productosFromFirstCsv.get(i);
+			Productos productoFromSecondCsv = productosFromSecondCsv.get(i);
+
+			// Crear un nuevo objeto Producto que combina los campos de ambos objetos
+			Productos productoMerged = new Productos();
+			productoMerged.setId(productoFromSecondCsv.getId());
+			productoMerged.setLugar(productoFromSecondCsv.getLugar());
+			productoMerged.setStock(productoFromSecondCsv.getStock());
+			productoMerged.setStockReal(productoFromSecondCsv.getStockReal());
+			productoMerged.setStockVirtual(productoFromSecondCsv.getStockVirtual());
+			productoMerged.setCodigo(productoFromFirstCsv.getCodigo());
+			productoMerged.setNombre(productoFromFirstCsv.getNombre());
+
+			// Agregar el objeto combinado a la lista final
+			productosList.add(productoMerged);
 		}
+
 		return productosList;
 	}
 
@@ -51,7 +58,9 @@ public class Reader {
 																			// campo
 					producto.setNombre(fields[0].trim());
 					productosList.add(producto);
-				} else {
+				}
+
+				else {
 					// Manejar el caso donde el número de campos no es el esperado
 					System.err.println("Error: Número de campos incorrecto en la línea: " + line);
 				}
