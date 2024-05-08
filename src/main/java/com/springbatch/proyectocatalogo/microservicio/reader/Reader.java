@@ -8,13 +8,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.opencsv.exceptions.CsvValidationException;
 import com.springbatch.proyectocatalogo.microservicio.model.Productos;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class Reader {
 
-	public List<Productos> readCsvFiles() throws IOException, CsvValidationException {
+	public List<Productos> readCsvFiles() throws IOException {
 		List<Productos> productosList = new ArrayList<>();
 
 		List<Productos> productosFromFirstCsv = readCsv(
@@ -27,7 +29,6 @@ public class Reader {
 			Productos productoFromFirstCsv = productosFromFirstCsv.get(i);
 			Productos productoFromSecondCsv = productosFromSecondCsv.get(i);
 
-			// Crear un nuevo objeto Producto que combina los campos de ambos objetos
 			Productos productoMerged = new Productos();
 			productoMerged.setId(productoFromSecondCsv.getId());
 			productoMerged.setLugar(productoFromSecondCsv.getLugar());
@@ -37,7 +38,6 @@ public class Reader {
 			productoMerged.setCodigo(productoFromFirstCsv.getCodigo());
 			productoMerged.setNombre(productoFromFirstCsv.getNombre());
 
-			// Agregar el objeto combinado a la lista final
 			productosList.add(productoMerged);
 		}
 
@@ -51,18 +51,14 @@ public class Reader {
 			while ((line = br.readLine()) != null) {
 				String[] fields = line.split(";");
 				Productos producto = new Productos();
-				// Aquí debes verificar que el número de campos es correcto antes de acceder a
-				// ellos
 				if (fields.length == 4) {
-					producto.setCodigo(Long.parseLong(fields[3].trim())); // Suponiendo que el id está en el primer
-																			// campo
+					producto.setCodigo(Long.parseLong(fields[3].trim()));
 					producto.setNombre(fields[0].trim());
 					productosList.add(producto);
 				}
 
 				else {
-					// Manejar el caso donde el número de campos no es el esperado
-					System.err.println("Error: Número de campos incorrecto en la línea: " + line);
+					log.error("Error: Número de campos incorrecto en la línea: " + line);
 				}
 			}
 		}
@@ -85,7 +81,7 @@ public class Reader {
 					producto.setStockVirtual(Long.parseLong(fields[4].trim()));
 					productosList.add(producto);
 				} else {
-					System.err.println("Error2: Número de campos incorrecto en la línea: \" + line");
+					log.error("Error 2: Número de campos incorrecto en la línea: \" + line");
 				}
 			}
 		}
